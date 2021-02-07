@@ -30,9 +30,13 @@ BlckBusterDB is an app that allows users to browse movies from the [The Movie Da
 ![](ezgif.com-video-to-gif.gif)
 
 ### Challenges
-- I had set two lables and one Imageview and it became difficult to layout them inside table view cell
-- I used auto layout to make them adaptive, they were adaptive. However, the table view cell acted according to the largest content in the cell.
-- If the imageview was bigger then it set the height in reference to imageview
-- if the bigger was synopsis, then it set the height in reference to synopsis.
-- The imageview had a fixed height. So, it was okay as it is alwasy fixed. But the synopis label sizes dynamically and if it had more content then table view cell would be larger
-- 
+- I had problems with **constraining** two lables and one Imageview inside table view cell
+- I used auto layout to make them adaptive, they were adaptive but not how I wanted them to be. 
+- The table view cell acted according to the largest content in the cell.
+    - If the imageview was bigger then it set the height in reference to imageview
+    - if the bigger was synopsis, then it set the height in reference to synopsis.
+- The imageview had a fixed height. So, it was okay as it is alwasy fixed. But the synopis label sizes dynamically and if it had more content then table view cell       **would be larger**
+- The Ui components were also not adapting in landscape mode 
+
+### Solutions
+- I used 
