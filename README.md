@@ -25,9 +25,14 @@ BlckBusterDB is an app that allows users to browse movies from the [The Movie Da
 - The app list movies with their title, images and synopsis.
 - The app supports both portrait and landscape mode.
 
-### App Walkthrough GIF
+### App Walkthrough
 <!--- <img src="YOUR_GIF_URL_HERE" width=250><br> --->
 ![](ezgif.com-video-to-gif.gif)
 
-### Notes
-Describe any challenges encountered while building the app.
+### Challenges
+- I had set two lables and one Imageview and it became difficult to layout them inside table view cell
+- I used auto layout to make them adaptive, they were adaptive. However, the table view cell acted according to the largest content in the cell.
+- If the imageview was bigger then it set the height in reference to imageview
+- if the bigger was synopsis, then it set the height in reference to synopsis.
+- The imageview had a fixed height. So, it was okay as it is alwasy fixed. But the synopis label sizes dynamically and if it had more content then table view cell would be larger
+- 
