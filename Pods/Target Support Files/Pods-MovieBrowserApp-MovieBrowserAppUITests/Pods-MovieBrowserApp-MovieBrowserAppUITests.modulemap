@@ -1,0 +1,6 @@
+framework module Pods_MovieBrowserApp_MovieBrowserAppUITests {
+  umbrella header "Pods-MovieBrowserApp-MovieBrowserAppUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
