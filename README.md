@@ -25,18 +25,20 @@ BlckBusterDB is an app that allows users to browse movies from the [The Movie Da
 - The app list movies with their title, images and synopsis.
 - The app supports both portrait and landscape mode.
 
-### App Walkthrough
-<!--- <img src="YOUR_GIF_URL_HERE" width=250><br> --->
-![](ezgif.com-video-to-gif.gif)
-
 ### Challenges
 - I had problems with **constraining** two lables and one Imageview inside table view cell
 - I used auto layout to make them adaptive, they were adaptive but not how I wanted them to be. 
 - The table view cell acted according to the largest content in the cell.
     - If the imageview was bigger then it set the height in reference to imageview
-    - if the bigger was synopsis, then it set the height in reference to synopsis.
-- The imageview had a fixed height. So, it was okay as it is alwasy fixed. But the synopis label sizes dynamically and if it had more content then table view cell       **would be larger**
-- The Ui components were also not adapting in landscape mode 
+    - if the synopsis bigger was, then it set the height in reference to synopsis which made the view look super weird and there would be no consistency.
+- The imageview had a fixed height. So, it was okay as it is alwasy fixed. But the **synopis label sizes dynamically** and if it had more content then table view cell **would be larger**
+- I could have given a fixed number of lines but it would not look nice in landscape, since landscape has more free space
 
 ### Solutions
-- I used 
+- I changed the number of lines to 5 programatically in MovieCell class to make it have no more than 5 lines in portrait mode
+- When the phone is in landscape mode then I rechange the number of lines to 0.
+
+### App Walkthrough
+<!--- <img src="YOUR_GIF_URL_HERE" width=250><br> --->
+![](ezgif.com-video-to-gif.gif)
+
