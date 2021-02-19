@@ -23,10 +23,8 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         tableView.dataSource = self
         tableView.delegate = self
         
-      
+        
         getMovies();
-        
-        
     }
     
     
@@ -49,7 +47,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     //for a particular row -> cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell") as! MovieCell
-        
+
         let movie = movies[indexPath.row]
         let title = movie["title"] as! String
         let synopsis = movie["overview"] as! String
