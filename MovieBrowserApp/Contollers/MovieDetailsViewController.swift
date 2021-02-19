@@ -16,10 +16,11 @@ class MovieDetailsViewController: UIViewController {
     @IBOutlet weak var posterView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var synopsisLabel: UILabel!
+    @IBOutlet weak var extraDetailsLabel: UILabel!
     
     var movie : [String:Any]!
     var movieVideos : [[String:Any]]!
-    var movieDetail : [String:Any]!
+   
 
     
     override func viewDidLoad() {
@@ -28,6 +29,8 @@ class MovieDetailsViewController: UIViewController {
         titleLabel.text = movie["title"] as? String
         synopsisLabel.text = movie["overview"] as? String
         synopsisLabel.sizeToFit()
+        
+       
     
         //image
         posterView.af.setImage(withURL: getImage(type: "poster_path", size: "500"))
@@ -58,7 +61,8 @@ class MovieDetailsViewController: UIViewController {
     
     //for setting up genres and other information
     func getMovieDetail(){
-        let url = URL(string: "https://api.themoviedb.org/3/movie/464052?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&language=en-US")!
+        let movieId = movie["id"] as! Int
+        let url = URL(string: "https://api.themoviedb.org/3/movie/" + String(movieId) + "?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&language=en-US")!
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
         let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
         let task = session.dataTask(with: request) { (data, response, error) in
@@ -67,10 +71,22 @@ class MovieDetailsViewController: UIViewController {
               print(error.localizedDescription)
            } else if let data = data {
         
-              let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
+            DispatchQueue.main.async {
+                let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
+                let releasedDate = dataDictionary["release_date"] as! String
+                let genres = dataDictionary["genres"] as! [[String:Any]]
+                let runtime = dataDictionary["runtime"] as! Int
                 
-            self.movieDetail = dataDictionary
+                var extraDetails : String = releasedDate + " \u{2022} "
+                for genre in genres{
+                    extraDetails += genre["name"] as! String + ","
+                }
+                extraDetails.removeLast()
+                extraDetails += " \u{2022} " + self.convertToHours(minute: runtime)
+                self.extraDetailsLabel.text = extraDetails
             
+            }
+
            }
         }
         task.resume()
@@ -88,6 +104,13 @@ class MovieDetailsViewController: UIViewController {
         
     }
     
+    func convertToHours(minute : Int) -> String{
+        let hour = minute / 60
+        let minute = minute % 60
+        let hm = String(hour) + "h " + String(minute) + "m"
+        return hm
+    }
+    
     
     func  getTrailer(id : Int){
         API.takeThisId(id: id)
@@ -101,5 +124,6 @@ class MovieDetailsViewController: UIViewController {
       
     }
     
+
 
 }//end of MovieDetailsViewController
