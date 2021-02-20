@@ -23,6 +23,7 @@ BlckBusterDB is an app that allows users to browse movies from the [The Movie Da
 - Variable was not updating because of the delay in getting data from the API, so had to use DispatchQueue.main.async to update the views in the main thread
 
 ### Walkthrough
+<img src="https://media.giphy.com/media/OS2cwyzx29LuufBhek/giphy.gif" width=250><br>
 
 
 ---
