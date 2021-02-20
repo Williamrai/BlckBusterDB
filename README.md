@@ -5,6 +5,26 @@ BlckBusterDB is an app that allows users to browse movies from the [The Movie Da
 <!--- 📝 `NOTE - PASTE PART 2 SNIPPET HERE:` Paste the README template for part 2 of this assignment here at the top. This will show a history of your development process, which users stories you completed and how your app looked and functioned at each step. --->
 
 ---
+## CinemaGo Part 2
+### Features
+- Latest Now Playing Movies 
+- Superheroes Movie collection
+- Watch the trailer of the Movies
+- Overview of the movies
+
+### Challenges
+- Collection View Cell did not layout as I had wanted
+- Tap Gesture was not responding to the tap
+- variable were not being updated even after receiving value from API
+
+### Solutions
+- Had to learn some Math to layout the Collection View Cell
+- Interaction checkbox was not checked in ImageView which was why Tap Gesture was not responding
+- Variable was not updating because of the delay in getting data from the API, so had to use DispatchQueue.main.async to update the views in the main thread
+
+### Walkthrough
+
+
 
 ## CinemaGo Part 1
 <!---
