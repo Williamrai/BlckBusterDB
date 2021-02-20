@@ -25,7 +25,7 @@ BlckBusterDB is an app that allows users to browse movies from the [The Movie Da
 ### Walkthrough
 
 
-
+---
 ## CinemaGo Part 1
 <!---
 ### User Stories
